@@ -13,7 +13,11 @@ const teamSchema = new mongoose.Schema({
     projects: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Project'
-    }]
+    }],
+    leader: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, { timestamps: true })
 
 const Team = mongoose.model('Team', teamSchema)

@@ -1,6 +1,7 @@
 const User = require('../models/mongodb/User.model')
 const Project = require('../models/mongodb/Project.model')
 const Team = require('../models/mongodb/Team.model')
+const { mongoose } = require('../config/mongoose')
 
 const getAllUserProjectsFromDb = async (userId) => {
 
@@ -12,13 +13,26 @@ const getAllUserProjectsFromDb = async (userId) => {
     return projects
 }
 
-const createUserInDb = async (name, role = "MEMBER") => {
-    const newUser = new User({ name, role })
+const createUserInDb = async (name) => {
+    const newUser = new User({ name })
     await newUser.save()
     return newUser
 }
 
+const checkUserExists = async (userId) => {
+    console.log(userId);
+    
+    if(!mongoose.Types.ObjectId.isValid(userId)) {
+        console.log("HERE");
+        return false
+        
+    }
+    const user = await User.findById(userId)
+    return user !== null
+}
+
 module.exports = {
     getAllUserProjectsFromDb,
-    createUserInDb
+    createUserInDb,
+    checkUserExists
 }

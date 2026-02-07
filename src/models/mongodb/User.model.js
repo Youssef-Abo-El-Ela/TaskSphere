@@ -5,11 +5,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    role: {
-        type: String,
-        enum: ['LEADER', 'MEMBER'],
-        default: 'MEMBER'
-    },
 }, { timestamps: true })
 
 const User = mongoose.model('User', userSchema)
