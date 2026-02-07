@@ -3,7 +3,7 @@ const { getAllUserProjects, createProject, getProjectById, updateProject, delete
 const userProjectsRouter = express.Router({ mergeParams: true })
 
 userProjectsRouter.get('/', getAllUserProjects)
-// userProjectsRouter.post('/', createProject)
+userProjectsRouter.post('/', createProject)
 // userProjectsRouter.get('/:id', getProjectById)
 // userProjectsRouter.patch('/:id', updateProject)
 // userProjectsRouter.delete('/:id', deleteProject)

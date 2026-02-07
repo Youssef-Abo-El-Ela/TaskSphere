@@ -20,12 +20,9 @@ const createUserInDb = async (name) => {
 }
 
 const checkUserExists = async (userId) => {
-    console.log(userId);
-    
-    if(!mongoose.Types.ObjectId.isValid(userId)) {
-        console.log("HERE");
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
         return false
-        
+
     }
     const user = await User.findById(userId)
     return user !== null

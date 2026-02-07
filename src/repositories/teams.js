@@ -10,6 +10,13 @@ const createTeamInDb = async (userId, teamName) => {
     return newTeam
 }
 
+const linkProjectToTeam = async (projectId, teamId) => {
+    const team = await Team.findById(teamId)
+    team.projects.push(projectId)
+    await team.save()
+}
+
 module.exports = {
-    createTeamInDb
+    createTeamInDb,
+    linkProjectToTeam
 }
