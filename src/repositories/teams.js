@@ -3,7 +3,7 @@ const Team = require('../models/mongodb/Team.model')
 const createTeamInDb = async (userId, teamName) => {
     const newTeam = new Team({
         name: teamName,
-        members: [userId],
+        members: [],
         leader: userId
     })
     await newTeam.save()

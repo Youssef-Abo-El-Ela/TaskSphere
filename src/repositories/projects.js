@@ -33,22 +33,22 @@ const updateProjectInDb = async (projectId, title, description, deadline, teamsI
 const deleteProjectFromDb = async (projectId) => {
     const session = await mongoose.startSession()
     session.startTransaction()
-    
+
     try {
         const project = await Project.findById(projectId).session(session)
-        if(!project) {
+        if (!project) {
             await session.abortTransaction()
             throw new Error('Project not found')
         }
-        
+
         await Project.findByIdAndDelete(projectId).session(session)
         await Team.updateMany(
-            { projects: projectId }, 
+            { projects: projectId },
             { $pull: { projects: projectId } }
         ).session(session)
 
         // Delete all tasks associated with the project
-        
+
         await session.commitTransaction()
     } catch (error) {
         await session.abortTransaction()
@@ -58,9 +58,22 @@ const deleteProjectFromDb = async (projectId) => {
     }
 }
 
+const linkTaskToProjectInDb = async (projectId, taskId) => {
+    const project = await Project.findById(projectId)
+    if (!project) {
+        throw new Error('Project not found')
+    }
+    const taskIdObj = {
+        id: taskId
+    }
+    project.tasks.push(taskIdObj)
+    await project.save()
+}
+
 module.exports = {
     createProjectInDb,
     getProjectByIdFromDb,
     updateProjectInDb,
-    deleteProjectFromDb
+    deleteProjectFromDb,
+    linkTaskToProjectInDb
 }
