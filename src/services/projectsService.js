@@ -1,4 +1,4 @@
-const { createProjectInDb, getProjectByIdFromDb, updateProjectInDb } = require("../repositories/projects")
+const { createProjectInDb, getProjectByIdFromDb, updateProjectInDb, deleteProjectFromDb } = require("../repositories/projects")
 const { linkProjectToTeam } = require("../repositories/teams")
 const { getAllUserProjectsFromDb } = require("../repositories/users")
 
@@ -29,9 +29,15 @@ const updateProjectService = async (projectId, title, description, deadline, tea
     await updateProjectInDb(projectId, title, description, deadline, teamsIds)
 }
 
+const deleteProjectService = async (projectId) => {
+    await deleteProjectFromDb(projectId)
+
+}
+
 module.exports = {
     getAllUserProjectsService,
     createProjectService,
     getProjectByIdService,
-    updateProjectService
+    updateProjectService,
+    deleteProjectService
 }

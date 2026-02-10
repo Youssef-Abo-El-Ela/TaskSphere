@@ -1,5 +1,5 @@
-const { getAllUserProjectsService, createProjectService, getProjectByIdService, updateProjectService } = require("../services/projectsService")
-const { checkIfUserIsTeamLeader } = require("../services/usersService")
+const { getAllUserProjectsService, createProjectService, getProjectByIdService, updateProjectService, deleteProjectService } = require("../services/projectsService")
+const { checkIfUserIsTeamLeader, checkIfUserIsProjectCreator } = require("../services/usersService")
 
 const getAllUserProjects = async (req, res) => {
     const userId = req.params.userId
@@ -34,9 +34,10 @@ const updateProject = async (req, res) => {
     if(!req.body.teamsIds || req.body.teamsIds.length === 0) {
         throw new Error('At least one team must be assigned to the project')
     }
+    const isCreator = await checkIfUserIsProjectCreator(req.params.userId, req.params.projectId)
     const isLeader = await checkIfUserIsTeamLeader(req.params.userId, req.body.teamsIds)
-    if(!isLeader) {
-        return res.status(403).json({ message: 'Only team leaders can update projects' })
+    if(!isLeader && !isCreator) {
+        return res.status(403).json({ message: 'Only team leaders or project creators can update projects' })
     }
     const { title, description, deadline, teamsIds } = req.body
 
@@ -46,9 +47,20 @@ const updateProject = async (req, res) => {
 
 }
 
+const deleteProject = async (req, res) => {
+    const projectId = req.params.projectId
+    const isCreator = await checkIfUserIsProjectCreator(req.params.userId, projectId)
+    if(!isCreator) {
+        return res.status(403).json({ message: 'Only project creators can delete projects' })
+    }
+    await deleteProjectService(projectId)
+    res.status(200).json({ message: 'Project deleted successfully' })
+}
+
 module.exports = {
     getAllUserProjects,
     createProject,
     getProjectById,
-    updateProject
+    updateProject,
+    deleteProject
 }

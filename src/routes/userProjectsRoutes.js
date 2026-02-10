@@ -6,7 +6,7 @@ userProjectsRouter.get('/', getAllUserProjects)
 userProjectsRouter.post('/', createProject)
 userProjectsRouter.get('/:projectId', getProjectById)
 userProjectsRouter.patch('/:projectId', updateProject)
-// userProjectsRouter.delete('/:id', deleteProject)
+userProjectsRouter.delete('/:projectId', deleteProject)
 
 
 module.exports = userProjectsRouter

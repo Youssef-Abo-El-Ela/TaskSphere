@@ -1,3 +1,4 @@
+const { getProjectByIdFromDb } = require("../repositories/projects")
 const { createUserInDb, checkIfUserIsTeamLeaderInDb } = require("../repositories/users")
 
 const createUserService = async (name) => {
@@ -15,7 +16,16 @@ const checkIfUserIsTeamLeader = async (userId, teamIds) => {
     return false
 }
 
+const checkIfUserIsProjectCreator = async (userId, projectId) => {
+    const project = await getProjectByIdFromDb(projectId)
+    if (project && project.createdBy.toString() === userId) {
+        return true
+    }
+    return false
+}
+
 module.exports = {
     createUserService,
-    checkIfUserIsTeamLeader
+    checkIfUserIsTeamLeader,
+    checkIfUserIsProjectCreator
 }
