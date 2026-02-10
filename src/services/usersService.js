@@ -1,4 +1,4 @@
-const { createUserInDb } = require("../repositories/users")
+const { createUserInDb, checkIfUserIsTeamLeaderInDb } = require("../repositories/users")
 
 const createUserService = async (name) => {
     if (!name) {
@@ -7,6 +7,15 @@ const createUserService = async (name) => {
     return await createUserInDb(name)
 }
 
+const checkIfUserIsTeamLeader = async (userId, teamIds) => {
+        const isLeader = await checkIfUserIsTeamLeaderInDb(userId, teamIds)
+        if (isLeader) {
+            return true
+        }
+    return false
+}
+
 module.exports = {
-    createUserService
+    createUserService,
+    checkIfUserIsTeamLeader
 }

@@ -6,13 +6,29 @@ const createProjectInDb = async (userId, title, description, deadline, teamId) =
         title,
         description,
         deadline,
-        team: teamId,
+        teams: [teamId]
     })
 
     await newProject.save()
     return newProject
 }
 
+const getProjectByIdFromDb = async (projectId) => {
+    const project = await Project.findById(projectId)
+    return project
+}
+
+const updateProjectInDb = async (projectId, title, description, deadline, teamsIds) => {
+    await Project.findByIdAndUpdate(projectId, {
+        title,
+        description,
+        deadline,
+        teams: teamsIds
+    })
+}
+
 module.exports = {
-    createProjectInDb
+    createProjectInDb,
+    getProjectByIdFromDb,
+    updateProjectInDb
 }

@@ -15,10 +15,10 @@ const projectSchema = new mongoose.Schema({
     tasks: [
         { id: String },
     ],
-    team: {
+    teams: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Team'
-    }
+    }]
 }, { timestamps: true })
 
 const Project = mongoose.model('Project', projectSchema)

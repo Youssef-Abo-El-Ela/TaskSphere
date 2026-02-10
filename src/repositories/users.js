@@ -28,8 +28,15 @@ const checkUserExists = async (userId) => {
     return user !== null
 }
 
+const checkIfUserIsTeamLeaderInDb = async (userId, teamIds) => {      
+    const teams = await Team.find({ _id: { $in: teamIds }, leader: userId })    
+    return teams.length > 0
+}
+
 module.exports = {
     getAllUserProjectsFromDb,
     createUserInDb,
-    checkUserExists
+    checkUserExists,
+    checkIfUserIsTeamLeaderInDb
+
 }

@@ -4,8 +4,8 @@ const userProjectsRouter = express.Router({ mergeParams: true })
 
 userProjectsRouter.get('/', getAllUserProjects)
 userProjectsRouter.post('/', createProject)
-// userProjectsRouter.get('/:id', getProjectById)
-// userProjectsRouter.patch('/:id', updateProject)
+userProjectsRouter.get('/:projectId', getProjectById)
+userProjectsRouter.patch('/:projectId', updateProject)
 // userProjectsRouter.delete('/:id', deleteProject)
 
 

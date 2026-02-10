@@ -1,4 +1,4 @@
-const { createProjectInDb } = require("../repositories/projects")
+const { createProjectInDb, getProjectByIdFromDb, updateProjectInDb } = require("../repositories/projects")
 const { linkProjectToTeam } = require("../repositories/teams")
 const { getAllUserProjectsFromDb } = require("../repositories/users")
 
@@ -17,8 +17,21 @@ const createProjectService = async (userId, title, description, deadline, teamId
     return newProject
 }
 
+const getProjectByIdService = async (projectId) => {
+    const project = await getProjectByIdFromDb(projectId)
+    return project
+}
+
+const updateProjectService = async (projectId, title, description, deadline, teamsIds) => {
+    if(deadline < new Date()) {
+        throw new Error('Deadline cannot be in the past')
+    }
+    await updateProjectInDb(projectId, title, description, deadline, teamsIds)
+}
 
 module.exports = {
     getAllUserProjectsService,
-    createProjectService
+    createProjectService,
+    getProjectByIdService,
+    updateProjectService
 }
