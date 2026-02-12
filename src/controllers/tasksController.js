@@ -1,4 +1,4 @@
-const { getAllUserTasksForProjectService, createTaskService, updateTaskService, getTaskByIdService } = require("../services/tasksService")
+const { getAllUserTasksForProjectService, createTaskService, updateTaskService, getTaskByIdService, deleteTaskService } = require("../services/tasksService")
 
 const createTask = async (req, res) => {
     const { userId, projectId } = req.params
@@ -33,9 +33,16 @@ const getTaskById = async (req, res) => {
     }
     res.status(200).json({ message: 'Task retrieved successfully', data: taskData })
 }
+
+const deleteTask = async (req, res) => {
+    const { taskId } = req.params
+    await deleteTaskService(taskId)
+    res.status(200).json({ message: 'Task deleted successfully' })
+}
 module.exports = {
     createTask,
     getAllAssignedTasksForProject,
     updateTask,
-    getTaskById
+    getTaskById,
+    deleteTask
 }

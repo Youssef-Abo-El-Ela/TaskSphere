@@ -1,6 +1,6 @@
 const Task = require("../models/postgresql/Tasks")
-const { linkTaskToProjectInDb, getProjectByIdFromDb } = require("../repositories/projects")
-const { addTaskToDb, getAllTasksDataForProjectFromDb, updateTaskInDb, getTaskByIdFromDb } = require("../repositories/tasks")
+const { linkTaskToProjectInDb, getProjectByIdFromDb, unlinkTasksFromProject } = require("../repositories/projects")
+const { addTaskToDb, getAllTasksDataForProjectFromDb, updateTaskInDb, getTaskByIdFromDb, deleteTaskFromDb } = require("../repositories/tasks")
 const { getTeamByIdFromDb } = require("../repositories/teams")
 const { getUserByIdFromDb } = require("../repositories/users")
 
@@ -70,10 +70,17 @@ const getTaskByIdService = async (taskId) => {
 const unlinkTasksFromTeam = async (teamId) => {
     await Task.update({ assignedTeam: null }, { where: { assignedTeam: teamId } })
 }
+
+const deleteTaskService = async (taskId) => {
+    await deleteTaskFromDb(taskId)
+    await unlinkTasksFromProject(taskId)
+}
+
 module.exports = {
     createTaskService,
     getAllUserTasksForProjectService,
     unlinkTasksFromTeam,
     updateTaskService,
-    getTaskByIdService
+    getTaskByIdService,
+    deleteTaskService
 }

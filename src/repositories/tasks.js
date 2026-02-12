@@ -60,10 +60,16 @@ const getTaskByIdFromDb = async (taskId) => {
     })
     return taskData
 }
+
+const deleteTaskFromDb = async (taskId) => {
+    await Task.destroy({ where: { id: taskId } })
+}
+
 module.exports = {
     addTaskToDb,
     getAllTasksDataForProjectFromDb,
     getAllTeamTasksFromDb,
     updateTaskInDb,
-    getTaskByIdFromDb
+    getTaskByIdFromDb,
+    deleteTaskFromDb
 }

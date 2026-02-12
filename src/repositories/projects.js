@@ -31,7 +31,7 @@ const updateProjectInDb = async (projectId, title, description, deadline, teamsI
     })
     if (!updatedProject) {
         throw new Error('Project not found')
-    }   
+    }
 }
 
 const deleteProjectFromDb = async (projectId) => {
@@ -74,10 +74,18 @@ const linkTaskToProjectInDb = async (projectId, taskId) => {
     await project.save()
 }
 
+const unlinkTasksFromProject = async (taskId) => {
+    await Project.updateOne(
+        { 'tasks.id': taskId },
+        { $pull: { tasks: { id: taskId } } }
+    )
+}
+
 module.exports = {
     createProjectInDb,
     getProjectByIdFromDb,
     updateProjectInDb,
     deleteProjectFromDb,
-    linkTaskToProjectInDb
+    linkTaskToProjectInDb,
+    unlinkTasksFromProject
 }
