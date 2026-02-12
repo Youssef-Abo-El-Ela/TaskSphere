@@ -9,11 +9,14 @@ const getAllUserProjectsService = async (userId) => {
 }
 
 const createProjectService = async (userId, title, description, deadline, teamId) => {
-    if(deadline < new Date()) {
+    if (deadline < new Date()) {
         throw new Error('Deadline cannot be in the past')
+        return
     }
     const newProject = await createProjectInDb(userId, title, description, deadline, teamId)
-    await linkProjectToTeam(newProject._id, teamId)
+    if(teamId) {
+        await linkProjectToTeam(newProject._id, teamId)
+    }
     return newProject
 }
 
@@ -23,10 +26,11 @@ const getProjectByIdService = async (projectId) => {
 }
 
 const updateProjectService = async (projectId, title, description, deadline, teamsIds) => {
-    if(deadline < new Date()) {
+    if (deadline < new Date()) {
         throw new Error('Deadline cannot be in the past')
     }
     await updateProjectInDb(projectId, title, description, deadline, teamsIds)
+    await Promise.all(teamsIds.map(teamId => linkProjectToTeam(projectId, teamId)))
 }
 
 const deleteProjectService = async (projectId) => {

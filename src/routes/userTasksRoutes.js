@@ -5,7 +5,7 @@ const { createTask, getAllAssignedTasksForProject } = require('../controllers/ta
 const tasksRouter = express.Router({mergeParams: true})
 
 tasksRouter.post('/', createTask)
-tasksRouter.get('/', getAllAssignedTasksForProject)
+tasksRouter.get('/:teamId', getAllAssignedTasksForProject)
 
 module.exports = {
     tasksRouter

@@ -1,6 +1,7 @@
 const Project = require("../models/mongodb/Project.model")
 const Team = require("../models/mongodb/Team.model")
 const { mongoose } = require("../config/mongoose")
+const Task = require("../models/postgresql/Tasks")
 
 const createProjectInDb = async (userId, title, description, deadline, teamId) => {
 
@@ -9,7 +10,7 @@ const createProjectInDb = async (userId, title, description, deadline, teamId) =
         description,
         deadline,
         createdBy: userId,
-        teams: [teamId]
+        teams: teamId ? [teamId] : []
     })
 
     await newProject.save()
@@ -22,12 +23,15 @@ const getProjectByIdFromDb = async (projectId) => {
 }
 
 const updateProjectInDb = async (projectId, title, description, deadline, teamsIds) => {
-    await Project.findByIdAndUpdate(projectId, {
+    const updatedProject = await Project.findByIdAndUpdate(projectId, {
         title,
         description,
         deadline,
         teams: teamsIds
     })
+    if (!updatedProject) {
+        throw new Error('Project not found')
+    }   
 }
 
 const deleteProjectFromDb = async (projectId) => {
@@ -48,8 +52,8 @@ const deleteProjectFromDb = async (projectId) => {
         ).session(session)
 
         // Delete all tasks associated with the project
-
         await session.commitTransaction()
+        await Task.destroy({ where: { projectId: projectId } })
     } catch (error) {
         await session.abortTransaction()
         throw error

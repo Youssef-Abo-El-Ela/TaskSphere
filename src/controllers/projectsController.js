@@ -31,9 +31,6 @@ const getProjectById = async (req, res) => {
 }
 
 const updateProject = async (req, res) => {
-    if(!req.body.teamsIds || req.body.teamsIds.length === 0) {
-        throw new Error('At least one team must be assigned to the project')
-    }
     const isCreator = await checkIfUserIsProjectCreator(req.params.userId, req.params.projectId)
     const isLeader = await checkIfUserIsTeamLeader(req.params.userId, req.body.teamsIds)
     if(!isLeader && !isCreator) {
@@ -42,7 +39,7 @@ const updateProject = async (req, res) => {
     const { title, description, deadline, teamsIds } = req.body
 
     await updateProjectService(req.params.projectId, title, description, deadline, teamsIds)
-
+    
     res.status(200).json({ message: 'Project updated successfully' })
 
 }

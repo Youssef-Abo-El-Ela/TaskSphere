@@ -2,14 +2,15 @@ const { sequelize } = require("../config/sequelize")
 const { Op } = require("sequelize")
 const Task = require("../models/postgresql/Tasks")
 
-const addTaskToDb = async (userId, projectId, title, description, deadline, assignedTo) => {
+const addTaskToDb = async (userId, projectId, title, description, deadline, assignedTo, teamId) => {
     const newTask = await Task.create({
         title,
         description,
         deadline,
         assignedTo,
         createdBy: userId,
-        projectId
+        projectId,
+        assignedTeam: teamId
     })
     return newTask
 
@@ -30,7 +31,17 @@ const getAllTasksDataForProjectFromDb = async (tasksIds, userId) => {
     return tasksData
 }
 
+const getAllTeamTasksFromDb = async (teamId) => {
+    const teamTasks = await Task.findAll({
+        where: {
+            assignedTeam: teamId,
+        }, attributes: { exclude: ['createdAt', 'updatedAt'] }
+    })
+    return teamTasks
+}
+
 module.exports = {
     addTaskToDb,
-    getAllTasksDataForProjectFromDb
+    getAllTasksDataForProjectFromDb,
+    getAllTeamTasksFromDb
 }

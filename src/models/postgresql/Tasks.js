@@ -28,6 +28,9 @@ const Task = sequelize.define("Task", {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
     },
+    assignedTeam: {
+        type: DataTypes.STRING,
+    },
     createdBy: {
         type: DataTypes.STRING,
         allowNull: false,

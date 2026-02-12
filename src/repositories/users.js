@@ -4,8 +4,18 @@ const Team = require('../models/mongodb/Team.model')
 const { mongoose } = require('../config/mongoose')
 
 const getAllUserProjectsFromDb = async (userId) => {
-
-    const userTeams = await Team.find({ members: userId }).populate('projects')
+    const userTeams = await Team.find({ $or: [{ members: userId }, { leader: userId }] }).populate({
+        path: 'projects',
+        populate: [
+            {
+                path: 'tasks'
+            },
+            {
+                path: 'teams',
+                select: 'name leader'
+            }
+        ]
+    })
     const projects = userTeams.reduce((acc, team) => {
         return acc.concat(team.projects)
     }, [])
@@ -28,8 +38,8 @@ const checkUserExists = async (userId) => {
     return user !== null
 }
 
-const checkIfUserIsTeamLeaderInDb = async (userId, teamIds) => {      
-    const teams = await Team.find({ _id: { $in: teamIds }, leader: userId })    
+const checkIfUserIsTeamLeaderInDb = async (userId, teamIds) => {
+    const teams = await Team.find({ _id: { $in: teamIds }, leader: userId })
     return teams.length > 0
 }
 
