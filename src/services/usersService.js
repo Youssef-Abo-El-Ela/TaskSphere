@@ -24,8 +24,14 @@ const checkIfUserIsProjectCreator = async (userId, projectId) => {
     return false
 }
 
+const getUserByIdService = async (userId) => {
+    const user = await getUserByIdFromDb(userId)
+    return user
+}
+
 module.exports = {
     createUserService,
     checkIfUserIsTeamLeader,
-    checkIfUserIsProjectCreator
+    checkIfUserIsProjectCreator,
+    getUserByIdService
 }

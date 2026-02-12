@@ -1,4 +1,4 @@
-const { getAllUserTasksForProjectService, createTaskService } = require("../services/tasksService")
+const { getAllUserTasksForProjectService, createTaskService, updateTaskService, getTaskByIdService } = require("../services/tasksService")
 
 const createTask = async (req, res) => {
     const { userId, projectId } = req.params
@@ -18,7 +18,24 @@ const getAllAssignedTasksForProject = async (req, res) => {
     res.status(200).json({ message: 'Tasks for Project retrieved successfully', data: userTasks })
 }
 
+const updateTask = async (req, res) => {
+    const { taskId } = req.params
+    const { title, description, status, deadline, assignedTo, teamId } = req.body
+    await updateTaskService(taskId, title, description, status, deadline, assignedTo, teamId)
+    res.status(200).json({ message: 'Task updated successfully' })
+}
+
+const getTaskById = async (req, res) => {
+    const { taskId } = req.params
+    const taskData = await getTaskByIdService(taskId)
+    if (!taskData) {
+        return res.status(404).json({ message: 'Task not found' })
+    }
+    res.status(200).json({ message: 'Task retrieved successfully', data: taskData })
+}
 module.exports = {
     createTask,
-    getAllAssignedTasksForProject
+    getAllAssignedTasksForProject,
+    updateTask,
+    getTaskById
 }

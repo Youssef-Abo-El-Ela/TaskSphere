@@ -1,11 +1,12 @@
 const express = require('express')
-const { createTeamService } = require('../services/teamsService')
-const { createTask, getAllAssignedTasksForProject } = require('../controllers/tasksController')
+const { createTask, getAllAssignedTasksForProject, updateTask, getTaskById } = require('../controllers/tasksController')
 
 const tasksRouter = express.Router({mergeParams: true})
 
 tasksRouter.post('/', createTask)
-tasksRouter.get('/:teamId', getAllAssignedTasksForProject)
+tasksRouter.get('/teams/:teamId', getAllAssignedTasksForProject)
+tasksRouter.get('/:taskId', getTaskById)
+tasksRouter.patch('/:taskId', updateTask)
 
 module.exports = {
     tasksRouter

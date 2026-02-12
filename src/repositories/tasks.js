@@ -40,8 +40,30 @@ const getAllTeamTasksFromDb = async (teamId) => {
     return teamTasks
 }
 
+const updateTaskInDb = async (taskId, title, description, status, deadline, assignedTo, teamId) => {
+    const updateData = {}
+    if (title) updateData.title = title
+    if (description) updateData.description = description
+    if (status) updateData.status = status
+    if (deadline) {
+        updateData.deadline = deadline
+    }
+    if (assignedTo) updateData.assignedTo = assignedTo
+    if (teamId) updateData.assignedTeam = teamId
+
+    await Task.update(updateData, { where: { id: taskId } })
+}
+
+const getTaskByIdFromDb = async (taskId) => {
+    const taskData = await Task.findOne({
+        where: { id: taskId },
+    })
+    return taskData
+}
 module.exports = {
     addTaskToDb,
     getAllTasksDataForProjectFromDb,
-    getAllTeamTasksFromDb
+    getAllTeamTasksFromDb,
+    updateTaskInDb,
+    getTaskByIdFromDb
 }

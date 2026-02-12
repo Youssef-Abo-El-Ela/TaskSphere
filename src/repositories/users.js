@@ -43,10 +43,16 @@ const checkIfUserIsTeamLeaderInDb = async (userId, teamIds) => {
     return teams.length > 0
 }
 
+const getUserByIdFromDb = async (userId) => {
+    const user = await User.findById(userId)
+    return user
+}
+
 module.exports = {
     getAllUserProjectsFromDb,
     createUserInDb,
     checkUserExists,
-    checkIfUserIsTeamLeaderInDb
+    checkIfUserIsTeamLeaderInDb,
+    getUserByIdFromDb
 
 }
