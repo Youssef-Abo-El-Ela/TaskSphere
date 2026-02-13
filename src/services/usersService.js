@@ -1,5 +1,5 @@
 const { getProjectByIdFromDb } = require("../repositories/projects")
-const { createUserInDb, checkIfUserIsTeamLeaderInDb } = require("../repositories/users")
+const { createUserInDb, checkIfUserIsTeamLeaderInDb, getAllUsersFromDb, updateUserInDb, softDeleteUserFromDb, getUserByIdFromDb } = require("../repositories/users")
 
 const createUserService = async (name) => {
     if (!name) {
@@ -9,10 +9,10 @@ const createUserService = async (name) => {
 }
 
 const checkIfUserIsTeamLeader = async (userId, teamIds) => {
-        const isLeader = await checkIfUserIsTeamLeaderInDb(userId, teamIds)
-        if (isLeader) {
-            return true
-        }
+    const isLeader = await checkIfUserIsTeamLeaderInDb(userId, teamIds)
+    if (isLeader) {
+        return true
+    }
     return false
 }
 
@@ -29,9 +29,26 @@ const getUserByIdService = async (userId) => {
     return user
 }
 
+const getAllUsersService = async () => {
+    const users = await getAllUsersFromDb()
+    return users
+}
+
+const updateUserService = async (userId, name, isActive) => {
+    const updatedUser = await updateUserInDb(userId, name, isActive)
+    return updatedUser
+}
+
+const deleteUserService = async (userId) => {
+    await softDeleteUserFromDb(userId)
+}
+
 module.exports = {
     createUserService,
     checkIfUserIsTeamLeader,
     checkIfUserIsProjectCreator,
-    getUserByIdService
+    getUserByIdService,
+    getAllUsersService,
+    updateUserService,
+    deleteUserService
 }

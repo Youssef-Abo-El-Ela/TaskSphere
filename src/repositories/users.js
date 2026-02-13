@@ -1,5 +1,4 @@
 const User = require('../models/mongodb/User.model')
-const Project = require('../models/mongodb/Project.model')
 const Team = require('../models/mongodb/Team.model')
 const { mongoose } = require('../config/mongoose')
 
@@ -48,11 +47,28 @@ const getUserByIdFromDb = async (userId) => {
     return user
 }
 
+const getAllUsersFromDb = async () => {
+    const users = await User.find()
+    return users
+}
+
+const updateUserInDb = async (userId, name, isActive) => {
+    const updatedUser = await User.findByIdAndUpdate(userId, { name, isActive }, { new: true })
+    return updatedUser
+}
+
+const softDeleteUserFromDb = async (userId) => {
+    await User.findByIdAndUpdate(userId, { isActive: false })
+}
+
 module.exports = {
     getAllUserProjectsFromDb,
     createUserInDb,
     checkUserExists,
     checkIfUserIsTeamLeaderInDb,
-    getUserByIdFromDb
+    getUserByIdFromDb,
+    getAllUsersFromDb,
+    updateUserInDb,
+    softDeleteUserFromDb
 
 }
