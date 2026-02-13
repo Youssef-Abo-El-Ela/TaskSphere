@@ -1,7 +1,6 @@
 const { Sequelize } = require("sequelize")
 const winstonLogger = require("../middlewares/winstonLogger")
 require("dotenv").config()
-
 const sequelize = new Sequelize(process.env.POSTGRES_URI)
 
 const testPGConnection = async () => {
@@ -11,7 +10,8 @@ const testPGConnection = async () => {
         console.log('Connection to PostgreSQL has been established successfully.')
         return
     } catch (error) {
-        winstonLogger.error(error)
+        winstonLogger.error('Unable to connect to the database:', error)
+        throw error
     }
 }
 

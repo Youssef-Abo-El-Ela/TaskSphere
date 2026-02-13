@@ -8,6 +8,7 @@ const { testPGConnection } = require('./config/sequelize')
 const { tasksRouter } = require('./routes/userTasksRoutes')
 const { isValidUser } = require('./middlewares/isValidUser')
 const analyticsRouter = require('./routes/analyticsRoutes')
+const errorHandler = require('./middlewares/errorhandler')
 require("dotenv").config()
 
 const app = express()
@@ -23,6 +24,7 @@ app.use('/api/:userId/projects', isValidUser, userProjectsRouter)
 app.use('/api/:userId/teams', isValidUser, userTeamsRouter)
 app.use('/api/:userId/projects/:projectId/tasks', isValidUser, tasksRouter)
 app.use('/api/analytics', analyticsRouter)
+app.use(errorHandler)
 
 module.exports = {
     app,

@@ -1,12 +1,13 @@
 const express = require('express')
 const { createUser, getAllUsers, getUserById, updateUser, deleteUser } = require('../controllers/userController')
+const asyncWrapper = require('../middlewares/asyncWrapper')
 const userRouter = express.Router()
 
 
-userRouter.post('/' , createUser)
-userRouter.get('/', getAllUsers)
-userRouter.get('/:userId', getUserById)
-userRouter.patch('/:userId', updateUser)
-userRouter.delete('/:userId', deleteUser)
+userRouter.post('/' , asyncWrapper(createUser))
+userRouter.get('/', asyncWrapper(getAllUsers))
+userRouter.get('/:userId', asyncWrapper(getUserById))
+userRouter.patch('/:userId', asyncWrapper(updateUser))
+userRouter.delete('/:userId', asyncWrapper(deleteUser))
 
 module.exports = userRouter
