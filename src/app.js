@@ -7,7 +7,7 @@ const userTeamsRouter = require('./routes/userTeamsRoutes')
 const { testPGConnection } = require('./config/sequelize')
 const { tasksRouter } = require('./routes/userTasksRoutes')
 const { isValidUser } = require('./middlewares/isValidUser')
-const analyticsRouter = require('./routes/analytics')
+const analyticsRouter = require('./routes/analyticsRoutes')
 require("dotenv").config()
 
 const app = express()

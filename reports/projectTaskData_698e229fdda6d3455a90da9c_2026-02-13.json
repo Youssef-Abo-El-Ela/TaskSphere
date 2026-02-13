@@ -1,0 +1,19 @@
+{
+  "projectId": "698e229fdda6d3455a90da9c",
+  "title": "Smart Task Manager",
+  "deadline": "2026-02-10T22:00:00.000Z",
+  "description": "Task Manager",
+  "tasks": [
+    {
+      "title": "toggle task feature",
+      "description": "Change Task status",
+      "assignedTeam": "Phantoms",
+      "createdBy": "Khaled",
+      "taskId": "3876ed13-17b8-4aac-957b-03db73e191a7",
+      "status": "To Do",
+      "assignedTo": "Khaled",
+      "deadline": "2026-02-13T22:00:00.000Z",
+      "createdAt": "2026-02-13T19:13:31.953Z"
+    }
+  ]
+}
