@@ -81,11 +81,16 @@ const unlinkTasksFromProject = async (taskId) => {
     )
 }
 
+const getAllProjectsFromDb = async () => {
+    const projects = await Project.find()
+    return projects
+}
 module.exports = {
     createProjectInDb,
     getProjectByIdFromDb,
     updateProjectInDb,
     deleteProjectFromDb,
     linkTaskToProjectInDb,
-    unlinkTasksFromProject
+    unlinkTasksFromProject,
+    getAllProjectsFromDb
 }
