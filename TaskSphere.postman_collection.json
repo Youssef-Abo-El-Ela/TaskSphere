@@ -1,0 +1,614 @@
+{
+  "info": {
+    "_postman_id": "0759c761-342c-498f-ab19-731b980b0285",
+    "name": "TaskSphere",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34401894"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Eid\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/users/",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/698f6f54a3973717b0111790/projects",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698f6f54a3973717b0111790",
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/users/698b7c3a4897ec9a6d815fb3",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "698b7c3a4897ec9a6d815fb3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User By Id",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"isActive\":true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/users/698b7c3a4897ec9a6d815fb3",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "698b7c3a4897ec9a6d815fb3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deactivate User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/users/698b7c3a4897ec9a6d815fb3",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "698b7c3a4897ec9a6d815fb3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/users/",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Teams",
+      "item": [
+        {
+          "name": "Create Team",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Eagles\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/teams",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "teams"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Teams for current User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/teams",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "teams"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Team",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"members\":[\"698f6f54a3973717b0111790\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/teams/6996ff226ec58aef971dabe4",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "teams",
+                "6996ff226ec58aef971dabe4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get team by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/teams/698e22addda6d3455a90da9f",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "teams",
+                "698e22addda6d3455a90da9f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Team",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/teams/698e22addda6d3455a90da9f",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "teams",
+                "698e22addda6d3455a90da9f"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "Create Project",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"ToDoList\",\r\n    \"description\":\"Task Manager\",\r\n    \"deadline\":\"2026-2-11\",\r\n    \"teamId\":\"6996ff226ec58aef971dabe4\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Project by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/69879b9919c1acf56b0fd3d1/projects/698e210e1222b35a4c10eea9",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "69879b9919c1acf56b0fd3d1",
+                "projects",
+                "698e210e1222b35a4c10eea9"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Project",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"iManage\",\r\n    \"teamsIds\":[\r\n        \"6996ff226ec58aef971dabe4\"\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects/6997019c6bc03e39403a5fe6",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects",
+                "6997019c6bc03e39403a5fe6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Project",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"Task Manager\",\r\n    \"teamsIds\":[\r\n        \"698b7c564897ec9a6d815fb7\"\r\n    ]\r\n}"
+            },
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects/698e210e1222b35a4c10eea9",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects",
+                "698e210e1222b35a4c10eea9"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Create Task",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"toggle task feature\",\r\n    \"description\":\"Change Task status\",\r\n    \"deadline\":\"2026-2-21\",\r\n    \"assignedTo\":[\"698b7c3a4897ec9a6d815fb3\"],\r\n    \"teamId\":\"698e53dbba639f2dcf7222b0\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects/698e229fdda6d3455a90da9c/tasks",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects",
+                "698e229fdda6d3455a90da9c",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"toggle task feature\",\r\n    \"description\":\"Change Task status\",\r\n    \"deadline\":\"2026-2-20\",\r\n    \"assignedTo\":[\"698b7c3a4897ec9a6d815fb3\"],\r\n    \"teamId\":\"698e22addda6d3455a90da9f\",\r\n    \"status\":\"Done\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects/698e229fdda6d3455a90da9c/tasks/211e141e-3c81-47c9-a8f1-8e8b0c75954a",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects",
+                "698e229fdda6d3455a90da9c",
+                "tasks",
+                "211e141e-3c81-47c9-a8f1-8e8b0c75954a"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Project Tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects/698e229fdda6d3455a90da9c/tasks/teams/698e53dbba639f2dcf7222b0",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects",
+                "698e229fdda6d3455a90da9c",
+                "tasks",
+                "teams",
+                "698e53dbba639f2dcf7222b0"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get task by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects/698e229fdda6d3455a90da9c/tasks/211e141e-3c81-47c9-a8f1-8e8b0c75954a",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects",
+                "698e229fdda6d3455a90da9c",
+                "tasks",
+                "211e141e-3c81-47c9-a8f1-8e8b0c75954a"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/698b7c3a4897ec9a6d815fb3/projects/698e229fdda6d3455a90da9c/tasks/211e141e-3c81-47c9-a8f1-8e8b0c75954a",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "698b7c3a4897ec9a6d815fb3",
+                "projects",
+                "698e229fdda6d3455a90da9c",
+                "tasks",
+                "211e141e-3c81-47c9-a8f1-8e8b0c75954a"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Analyitcs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/analytics/",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "analytics",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/analytics/export",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "analytics",
+                "export"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export Project Task Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/analytics/export-project-tasks-data/698e229fdda6d3455a90da9c",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "analytics",
+                "export-project-tasks-data",
+                "698e229fdda6d3455a90da9c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Task Data per Project",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/analytics/698e229fdda6d3455a90da9c/task-data",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "analytics",
+                "698e229fdda6d3455a90da9c",
+                "task-data"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
