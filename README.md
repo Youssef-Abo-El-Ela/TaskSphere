@@ -372,6 +372,7 @@ GET /api/users
 
 > 📸 **Postman Screenshot — Get All Users**
 > <!-- Insert your Postman screenshot here -->
+> <img width="1377" height="857" alt="image" src="https://github.com/user-attachments/assets/7ceac51e-6f40-401a-a386-6931a878a809" />
 
 ---
 
@@ -410,6 +411,7 @@ Content-Type: application/json
 
 > 📸 **Postman Screenshot — Create Project**
 > <!-- Insert your Postman screenshot here -->
+> <img width="1387" height="942" alt="image" src="https://github.com/user-attachments/assets/d98d1eca-2a54-4717-a28d-6708019f73d8" />
 
 ---
 
@@ -443,6 +445,7 @@ Content-Type: application/json
 
 > 📸 **Postman Screenshot — Create Team**
 > <!-- Insert your Postman screenshot here -->
+> <img width="1371" height="875" alt="image" src="https://github.com/user-attachments/assets/d088520c-4b1b-4cf1-b71e-ccb8d6e0348f" />
 
 ---
 
@@ -484,6 +487,7 @@ Content-Type: application/json
 
 > 📸 **Postman Screenshot — Create Task**
 > <!-- Insert your Postman screenshot here -->
+> <img width="1372" height="939" alt="image" src="https://github.com/user-attachments/assets/b4c7a9b3-09bf-4225-b139-0732905d9e31" />
 
 ---
 
@@ -508,6 +512,7 @@ Content-Type: application/json
 
 > 📸 **Postman Screenshot — Update Task**
 > <!-- Insert your Postman screenshot here -->
+> <img width="1381" height="657" alt="image" src="https://github.com/user-attachments/assets/f7206ce8-9811-456c-bacb-0bf69b1b2c63" />
 
 ---
 
@@ -536,6 +541,7 @@ GET /api/analytics
 
 > 📸 **Postman Screenshot — Get Analytics**
 > <!-- Insert your Postman screenshot here -->
+> <img width="1386" height="905" alt="image" src="https://github.com/user-attachments/assets/281ca855-3035-4970-931f-d506131556fe" />
 
 ---
 
@@ -557,3 +563,4 @@ When a validation error or resource is not found, the API returns a structured e
 
 > 📸 **Postman Screenshot — Error Response**
 > <!-- Insert your Postman screenshot here -->
+> <img width="1388" height="752" alt="image" src="https://github.com/user-attachments/assets/eda2e789-8033-4e58-98d4-51fe8b2db965" />
