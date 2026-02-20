@@ -1,0 +1,44 @@
+[
+  {
+    "projectId": "698e229fdda6d3455a90da9c",
+    "projectName": "iManage",
+    "numOfTasks": 3,
+    "numOfCompletedTasks": 0,
+    "numOfTeams": 1
+  },
+  {
+    "projectId": "699701716bc03e39403a5fe2",
+    "projectName": "ToDoList",
+    "numOfTasks": 0,
+    "numOfCompletedTasks": 0,
+    "numOfTeams": 1
+  },
+  {
+    "projectId": "6997019c6bc03e39403a5fe6",
+    "projectName": "iManage",
+    "numOfTasks": 0,
+    "numOfCompletedTasks": 0,
+    "numOfTeams": 1
+  },
+  {
+    "projectId": "699701e22cffca9b6e5be0f9",
+    "projectName": "ToDoList",
+    "numOfTasks": 0,
+    "numOfCompletedTasks": 0,
+    "numOfTeams": 1
+  },
+  {
+    "projectId": "699812be378e7e11b8680981",
+    "projectName": "Notioni",
+    "numOfTasks": 0,
+    "numOfCompletedTasks": 0,
+    "numOfTeams": 1
+  },
+  {
+    "projectId": "699846d46e1982684cfef2c1",
+    "projectName": "MyProject",
+    "numOfTasks": 1,
+    "numOfCompletedTasks": 0,
+    "numOfTeams": 1
+  }
+]
